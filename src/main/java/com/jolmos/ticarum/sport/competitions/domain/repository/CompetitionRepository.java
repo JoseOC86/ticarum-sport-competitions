@@ -6,4 +6,6 @@ public interface CompetitionRepository {
 
     Competition save(Competition competition);
 
+    Competition findById(Long id);
+
 }

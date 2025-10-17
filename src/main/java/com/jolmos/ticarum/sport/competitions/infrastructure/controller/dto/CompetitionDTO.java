@@ -7,11 +7,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 public record CompetitionDTO(@JsonIgnore Long id,
                              @NotBlank String nombre,
                              @NotBlank String deporte,
                              @NotNull LocalDate fechaInicio,
                              @NotNull LocalDate fechaFin,
-                             @Min(value = 1) @Max(value = 100) int pistasDisponibles) {
+                             @Min(value = 1) @Max(value = 100) int pistasDisponibles,
+                             Set<TeamDTO> equipos) {
 }

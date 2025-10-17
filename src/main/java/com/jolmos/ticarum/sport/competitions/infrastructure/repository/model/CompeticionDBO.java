@@ -4,11 +4,11 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "competiciones")
 @Data
-
 public class CompeticionDBO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +24,8 @@ public class CompeticionDBO {
     private LocalDate fechaFin;
     @Column(name = "pistas_disponibles")
     private int pistasDisponibles;
+    @Column (name = "equipos")
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<TeamDBO> equipos;
+
 }

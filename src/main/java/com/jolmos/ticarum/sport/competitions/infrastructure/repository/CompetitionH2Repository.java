@@ -18,4 +18,9 @@ public class CompetitionH2Repository implements CompetitionRepository {
         CompeticionDBO competitionDBO = this.competitionJPARepository.save(this.competicionDBOMapper.map(competition));
         return this.competicionDBOMapper.map(competitionDBO);
     }
+
+    @Override
+    public Competition findById(Long id) {
+        return this.competicionDBOMapper.map(this.competitionJPARepository.findById(id).orElse(null));
+    }
 }
