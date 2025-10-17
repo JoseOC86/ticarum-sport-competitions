@@ -1,28 +1,19 @@
 package com.jolmos.ticarum.sport.competitions.domain.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Competicion {
+public class Competition {
 
-    private Long  id;
+    private Long id;
     private String nombre;
     private String deporte;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
-    private int pistasDisponibles   ;
-
-    public Competicion(Long id, String nombre, String deporte, LocalDate fechaInicio, LocalDate fechaFin, int pistasDisponibles) {
-        this.id = id;
-        this.nombre = nombre;
-        this.deporte = deporte;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.pistasDisponibles = pistasDisponibles;
-    }
-
-    public Competicion() {
-
-    }
+    private int pistasDisponibles;
+    private Set<Team> equipos;
 
     public Long getId() {
         return id;
@@ -70,5 +61,16 @@ public class Competicion {
 
     public void setPistasDisponibles(int pistasDisponibles) {
         this.pistasDisponibles = pistasDisponibles;
+    }
+
+    public boolean addEquipo(Team equipo) {
+        if (this.equipos == null) {
+            this.equipos = new HashSet<Team>();
+        }
+        return this.equipos.add(equipo);
+    }
+
+    public Set<Team> getEquipos() {
+        return equipos;
     }
 }

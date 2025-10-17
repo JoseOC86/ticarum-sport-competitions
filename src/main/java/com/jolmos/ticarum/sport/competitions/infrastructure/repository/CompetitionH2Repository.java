@@ -1,6 +1,6 @@
 package com.jolmos.ticarum.sport.competitions.infrastructure.repository;
 
-import com.jolmos.ticarum.sport.competitions.domain.model.Competicion;
+import com.jolmos.ticarum.sport.competitions.domain.model.Competition;
 import com.jolmos.ticarum.sport.competitions.domain.repository.CompetitionRepository;
 import com.jolmos.ticarum.sport.competitions.infrastructure.repository.mapper.CompeticionDBOMapper;
 import com.jolmos.ticarum.sport.competitions.infrastructure.repository.model.CompeticionDBO;
@@ -14,8 +14,8 @@ public class CompetitionH2Repository implements CompetitionRepository {
     private final CompeticionDBOMapper competicionDBOMapper;
 
     @Override
-    public Competicion save(Competicion competicion) {
-        CompeticionDBO competitionDBO = this.competitionJPARepository.save(this.competicionDBOMapper.map(competicion));
+    public Competition save(Competition competition) {
+        CompeticionDBO competitionDBO = this.competitionJPARepository.save(this.competicionDBOMapper.map(competition));
         return this.competicionDBOMapper.map(competitionDBO);
     }
 }

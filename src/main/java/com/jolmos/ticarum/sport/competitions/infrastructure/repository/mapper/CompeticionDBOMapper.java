@@ -1,35 +1,35 @@
 package com.jolmos.ticarum.sport.competitions.infrastructure.repository.mapper;
 
-import com.jolmos.ticarum.sport.competitions.domain.model.Competicion;
+import com.jolmos.ticarum.sport.competitions.domain.model.Competition;
 import com.jolmos.ticarum.sport.competitions.infrastructure.repository.model.CompeticionDBO;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CompeticionDBOMapper {
 
-    public CompeticionDBO map(Competicion competicion) {
+    public CompeticionDBO map(Competition competition) {
 
         CompeticionDBO competicionDBO = new CompeticionDBO();
-        competicionDBO.setId(competicion.getId());
-        competicionDBO.setNombre(competicion.getNombre());
-        competicionDBO.setDeporte(competicion.getDeporte());
-        competicionDBO.setFechaInicio(competicion.getFechaInicio());
-        competicionDBO.setFechaFin(competicion.getFechaFin());
-        competicionDBO.setPistasDisponibles(competicion.getPistasDisponibles());
+        competicionDBO.setId(competition.getId());
+        competicionDBO.setNombre(competition.getNombre());
+        competicionDBO.setDeporte(competition.getDeporte());
+        competicionDBO.setFechaInicio(competition.getFechaInicio());
+        competicionDBO.setFechaFin(competition.getFechaFin());
+        competicionDBO.setPistasDisponibles(competition.getPistasDisponibles());
         return competicionDBO;
 
     }
 
-    public Competicion map(CompeticionDBO competicionDBO) {
+    public Competition map(CompeticionDBO competicionDBO) {
 
-        Competicion competicion = new Competicion();
-        competicion.setId(competicionDBO.getId());
-        competicion.setNombre(competicionDBO.getNombre());
-        competicion.setDeporte(competicionDBO.getDeporte());
-        competicion.setFechaInicio(competicionDBO.getFechaInicio());
-        competicion.setFechaFin(competicionDBO.getFechaFin());
-        competicion.setPistasDisponibles(competicionDBO.getPistasDisponibles());
-        return competicion;
+        Competition competition = new Competition();
+        competition.setId(competicionDBO.getId());
+        competition.setNombre(competicionDBO.getNombre());
+        competition.setDeporte(competicionDBO.getDeporte());
+        competition.setFechaInicio(competicionDBO.getFechaInicio());
+        competition.setFechaFin(competicionDBO.getFechaFin());
+        competition.setPistasDisponibles(competicionDBO.getPistasDisponibles());
+        return competition;
 
     }
 
