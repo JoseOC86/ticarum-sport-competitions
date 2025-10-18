@@ -1,13 +1,11 @@
 package com.jolmos.ticarum.sport.competitions.domain.model;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Team {
 
     private Long id;
     private String nombre;
-    private List<Competition> competiciones;
 
 
     @Override
@@ -37,11 +35,4 @@ public class Team {
         this.nombre = nombre;
     }
 
-    public List<Competition> getCompeticiones() {
-        return competiciones;
-    }
-
-    public void setCompeticiones(List<Competition> competiciones) {
-        this.competiciones = competiciones;
-    }
 }

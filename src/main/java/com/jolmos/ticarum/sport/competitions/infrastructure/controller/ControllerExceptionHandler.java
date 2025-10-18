@@ -1,7 +1,7 @@
 package com.jolmos.ticarum.sport.competitions.infrastructure.controller;
 
 import com.jolmos.ticarum.sport.competitions.domain.model.exception.CompetitionNotFoundException;
-import com.jolmos.ticarum.sport.competitions.domain.model.exception.TeamAlreadyExist;
+import com.jolmos.ticarum.sport.competitions.domain.model.exception.TeamAlreadyExistException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -15,8 +15,8 @@ public class ControllerExceptionHandler {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(TeamAlreadyExist.class)
-    public ResponseEntity <String> teamAlreadyExistExceptionHandler(TeamAlreadyExist exception){
+    @ExceptionHandler(TeamAlreadyExistException.class)
+    public ResponseEntity <String> teamAlreadyExistExceptionHandler(TeamAlreadyExistException exception){
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
     }
 }

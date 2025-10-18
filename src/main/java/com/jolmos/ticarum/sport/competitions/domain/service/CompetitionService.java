@@ -3,7 +3,7 @@ package com.jolmos.ticarum.sport.competitions.domain.service;
 import com.jolmos.ticarum.sport.competitions.domain.model.Competition;
 import com.jolmos.ticarum.sport.competitions.domain.model.Team;
 import com.jolmos.ticarum.sport.competitions.domain.model.exception.CompetitionNotFoundException;
-import com.jolmos.ticarum.sport.competitions.domain.model.exception.TeamAlreadyExist;
+import com.jolmos.ticarum.sport.competitions.domain.model.exception.TeamAlreadyExistException;
 import com.jolmos.ticarum.sport.competitions.domain.repository.CompetitionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class CompetitionService {
         Optional<Team> storedTeam = this.teamService.findById(team.getId());
 
         if (!competition.get().addEquipo(storedTeam.isPresent() ? storedTeam.get() : team)){
-            throw new TeamAlreadyExist("Team already exist");
+            throw new TeamAlreadyExistException("Team already exist");
         };
         return this.competitionRepository.save(competition.get()).getEquipos().stream().filter(c->c.getNombre().equals(team.getNombre())).findFirst().get();
     }
