@@ -30,7 +30,7 @@ public class CompetitionController {
         return ResponseEntity.created(URI.create("/api/competition/" + competitionDTO.id())).body(competitionDTO);
     }
 
-    @PostMapping(path = "/{id/equipo}")
+    @PostMapping(path = "/{idCompeticion}/equipo")
     public ResponseEntity<URI> registrarEquipo(@PathVariable @Min(value = 0) Long idCompeticion, @Valid @RequestBody TeamDTO teamDTO) {
         TeamDTO teamDTOResponse = equipoDTOMapper.map(this.registrarEquipoUseCase.execute(this.equipoDTOMapper.map(teamDTO), idCompeticion));;
         return ResponseEntity.created(URI.create("/api/competition/" + idCompeticion + "/equipo/" + teamDTOResponse.id())).build();

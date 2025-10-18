@@ -2,7 +2,9 @@ package com.jolmos.ticarum.sport.competitions.domain.repository;
 
 import com.jolmos.ticarum.sport.competitions.domain.model.Team;
 
+import java.util.Optional;
+
 public interface TeamRepository {
 
-    Team save(Team team);
+    Optional<Team> findById(Long teamId);
 }

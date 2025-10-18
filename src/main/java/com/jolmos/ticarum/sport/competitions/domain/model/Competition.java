@@ -1,7 +1,6 @@
 package com.jolmos.ticarum.sport.competitions.domain.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -71,6 +70,9 @@ public class Competition {
     }
 
     public Set<Team> getEquipos() {
+        if (this.equipos == null) {
+            this.equipos = new HashSet<Team>();
+        }
         return equipos;
     }
 }

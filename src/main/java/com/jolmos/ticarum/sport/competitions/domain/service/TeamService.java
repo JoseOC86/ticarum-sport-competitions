@@ -5,6 +5,8 @@ import com.jolmos.ticarum.sport.competitions.domain.repository.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class TeamService {
@@ -12,8 +14,11 @@ public class TeamService {
 
     private final TeamRepository teamRepository;
 
-    public Team registrar(Team team) {
-        return this.teamRepository.save(team);
+    public Optional<Team> findById(Long teamId) {
+        if (teamId == null) {
+            return Optional.empty();
+        }
+        return this.teamRepository.findById(teamId);
     }
 
 

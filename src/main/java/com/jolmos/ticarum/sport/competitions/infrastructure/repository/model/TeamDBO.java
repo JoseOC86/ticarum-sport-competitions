@@ -16,7 +16,7 @@ public class TeamDBO {
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "competiciones")
-    @ManyToMany
+    @ManyToMany(mappedBy = "equipos")
     private List<CompeticionDBO> competiciones;
 
 

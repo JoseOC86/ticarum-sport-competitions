@@ -5,6 +5,7 @@ import com.jolmos.ticarum.sport.competitions.infrastructure.repository.model.Com
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -14,6 +15,10 @@ public class CompeticionDBOMapper {
     private final EquipoDBOMapper equipoDBOMapper;
 
     public CompeticionDBO map(Competition competition) {
+
+        if (competition == null) {
+            return null;
+        }
 
         CompeticionDBO competicionDBO = new CompeticionDBO();
         competicionDBO.setId(competition.getId());
@@ -27,16 +32,20 @@ public class CompeticionDBOMapper {
 
     }
 
-    public Competition map(CompeticionDBO competicionDBO) {
+    public Competition map(Optional<CompeticionDBO> competicionDBO) {
+
+        if (competicionDBO.isEmpty()) {
+            return null;
+        }
 
         Competition competition = new Competition();
-        competition.setId(competicionDBO.getId());
-        competition.setNombre(competicionDBO.getNombre());
-        competition.setDeporte(competicionDBO.getDeporte());
-        competition.setFechaInicio(competicionDBO.getFechaInicio());
-        competition.setFechaFin(competicionDBO.getFechaFin());
-        competition.setPistasDisponibles(competicionDBO.getPistasDisponibles());
-        competicionDBO.getEquipos().stream().map(equipoDBOMapper::map).forEach(competition::addEquipo);
+        competition.setId(competicionDBO.get().getId());
+        competition.setNombre(competicionDBO.get().getNombre());
+        competition.setDeporte(competicionDBO.get().getDeporte());
+        competition.setFechaInicio(competicionDBO.get().getFechaInicio());
+        competition.setFechaFin(competicionDBO.get().getFechaFin());
+        competition.setPistasDisponibles(competicionDBO.get().getPistasDisponibles());
+        competicionDBO.get().getEquipos().stream().map(equipoDBOMapper::map).forEach(competition::addEquipo);
         return competition;
 
     }

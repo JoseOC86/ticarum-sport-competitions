@@ -7,6 +7,8 @@ import com.jolmos.ticarum.sport.competitions.infrastructure.repository.model.Com
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 @RequiredArgsConstructor
 public class CompetitionH2Repository implements CompetitionRepository {
@@ -16,11 +18,11 @@ public class CompetitionH2Repository implements CompetitionRepository {
     @Override
     public Competition save(Competition competition) {
         CompeticionDBO competitionDBO = this.competitionJPARepository.save(this.competicionDBOMapper.map(competition));
-        return this.competicionDBOMapper.map(competitionDBO);
+        return this.competicionDBOMapper.map(Optional.of(competitionDBO));
     }
 
     @Override
-    public Competition findById(Long id) {
-        return this.competicionDBOMapper.map(this.competitionJPARepository.findById(id).orElse(null));
+    public Optional<Competition> findById(Long id) {
+        return Optional.ofNullable(this.competicionDBOMapper.map(this.competitionJPARepository.findById(id)));
     }
 }

@@ -2,10 +2,12 @@ package com.jolmos.ticarum.sport.competitions.domain.repository;
 
 import com.jolmos.ticarum.sport.competitions.domain.model.Competition;
 
+import java.util.Optional;
+
 public interface CompetitionRepository {
 
     Competition save(Competition competition);
 
-    Competition findById(Long id);
+    Optional<Competition> findById(Long id);
 
 }
