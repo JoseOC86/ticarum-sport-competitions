@@ -9,6 +9,9 @@ public class EquipoDBOMapper {
 
     public TeamDBO map(Team team) {
 
+        if(team == null)
+            return null;
+
         TeamDBO teamDBO = new TeamDBO();
         teamDBO.setId(team.getId());
         teamDBO.setNombre(team.getNombre());
@@ -18,6 +21,9 @@ public class EquipoDBOMapper {
     }
 
     public Team map(TeamDBO teamDBO) {
+
+        if(teamDBO == null)
+            return null;
 
         Team team = new Team();
         team.setId(teamDBO.getId());

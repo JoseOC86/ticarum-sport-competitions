@@ -1,4 +1,4 @@
-package com.jolmos.ticarum.sport.competitions.aplication.usecase;
+package com.jolmos.ticarum.sport.competitions.application.usecase;
 
 import com.jolmos.ticarum.sport.competitions.domain.model.Team;
 import com.jolmos.ticarum.sport.competitions.domain.service.CompetitionService;

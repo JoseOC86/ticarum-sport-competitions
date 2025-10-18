@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
@@ -16,6 +18,11 @@ public class TeamH2Repository implements TeamRepository {
 
     @Override
     public Optional<Team> findById(Long id) {
-        return Optional.ofNullable(this.equipoDBOMapper.map(this.teamJPARepository.findById(id).get()));
+        return Optional.ofNullable(this.equipoDBOMapper.map(this.teamJPARepository.findById(id).orElse(null)));
+    }
+
+    @Override
+    public Set<Team> findByCompeticiones(Long competitionId) {
+        return this.teamJPARepository.findByCompeticionesId(competitionId).stream().map(equipoDBOMapper::map).collect(Collectors.toSet());
     }
 }

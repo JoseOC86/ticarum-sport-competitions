@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -22,4 +23,7 @@ public class TeamService {
     }
 
 
+    public Set<Team> findByCompetition(Long competitionId) {
+        return this.teamRepository.findByCompeticiones(competitionId);
+    }
 }
