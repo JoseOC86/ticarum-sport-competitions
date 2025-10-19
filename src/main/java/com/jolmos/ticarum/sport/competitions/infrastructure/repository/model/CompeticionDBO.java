@@ -14,17 +14,17 @@ public class CompeticionDBO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre", nullable = false)
     private String nombre;
-    @Column(name = "deporte")
+    @Column(name = "deporte", nullable = false)
     private String deporte;
-    @Column(name = "fecha_inicio")
+    @Column(name = "fecha_inicio", nullable = false)
     private LocalDate fechaInicio;
-    @Column(name = "fecha_fin")
+    @Column(name = "fecha_fin", nullable = false)
     private LocalDate fechaFin;
-    @Column(name = "pistas_disponibles")
+    @Column(name = "pistas_disponibles", nullable = false)
     private int pistasDisponibles;
-    @Column (name = "equipos")
+    @Column(name = "equipos")
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<TeamDBO> equipos;
 

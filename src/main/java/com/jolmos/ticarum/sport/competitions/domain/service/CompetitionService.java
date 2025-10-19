@@ -18,10 +18,25 @@ public class CompetitionService {
     private final CompetitionRepository competitionRepository;
     private final TeamService teamService;
 
+    /**
+     * Registra una competición.
+     * @param competition Competición a registrar.
+     * @return Competición registrada.
+     */
     public Competition registrar(Competition competition) {
         return this.competitionRepository.save(competition);
     }
 
+    /**
+     * Registra equipo en una competición. La competición debe de existir y el equipo no debe de estar registraado
+     * previamente en la competición. Si el equipo se registro previamente en otra competición se inscribira ese mismo
+     * equipo en la competición que se pasa como parametro.
+     * @param competitionId id de la competición en la que se quiere registrar el equipo.
+     * @param team equipo que se quiere registrar.
+     * @return equipo registrado.
+     * @throws CompetitionNotFoundException Si la competición en la que se quiere registrar el equipo no existe.
+     * @throws TeamAlreadyExistEsxeption Si el equipo ya estaba registrado en la competición.
+     */
     public Team registrarEquipo (Long competitionId, Team team) {
         Optional<Competition> competition = this.competitionRepository.findById(competitionId);
         if (competition.isEmpty()) {

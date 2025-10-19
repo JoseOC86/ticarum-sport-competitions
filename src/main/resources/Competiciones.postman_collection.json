@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "94a04565-deb3-46cb-aa6a-73073ce29ce2",
+		"name": "Competiciones Deportivas Ticarum",
+		"description": "API de servicio de gestión de competiciones.\n\n- Registra tu competición.\n    \n- Añade equipos.\n    \n- Consulta los equipos por competición.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49336695",
+		"_collection_link": "https://joseoc86-7610564.postman.co/workspace/65877d52-945e-4719-855e-95142c1918c6/collection/49336695-94a04565-deb3-46cb-aa6a-73073ce29ce2?action=share&source=collection_link&creator=49336695"
+	},
+	"item": [
+		{
+			"name": "Buscar Equipos por Competicion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"JoseTeam\"\n   \n\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/competition/{{idCompeticion}}/equipo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"competition",
+						"{{idCompeticion}}",
+						"equipo"
+					]
+				},
+				"description": "Consultar los equipos por competición."
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Competición",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"ACB\",\n    \"deporte\": \"Baloncesto\",\n    \"fechaInicio\": \"2025-10-17\",\n    \"fechaFin\": \"2025-10-19\",\n    \"pistasDisponibles\": 3\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/competition",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"competition"
+					]
+				},
+				"description": "Crear competición."
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar Equipo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"JoseTeam\",\n    \"id\": null //!null intenta asociar con equipo existente \n   \n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/competition/{{idCompeticion}}/equipo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"competition",
+						"{{idCompeticion}}",
+						"equipo"
+					]
+				},
+				"description": "Registrar equipo."
+			},
+			"response": []
+		}
+	]
+}

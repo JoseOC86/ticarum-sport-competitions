@@ -18,7 +18,7 @@ import java.util.Optional;
 @ExtendWith(MockitoExtension.class)
 public class CompetitionServiceTest {
 
-    public static final String NOMBRE_TEAM = "Jose Team";
+
     @Mock
     private CompetitionRepository competitionRepository;
     @Mock
@@ -27,6 +27,7 @@ public class CompetitionServiceTest {
     private CompetitionService competitionService;
     private final static Long ID_COMPETICION = 1L;
     private final static Long ID_TEAM = 2L;
+    private static final String NOMBRE_TEAM = "Jose Team";
 
     @Test
     void executeRegistrarEquipo_withNoExistenCompetition_throwsCompetitionNotFoundException() {
